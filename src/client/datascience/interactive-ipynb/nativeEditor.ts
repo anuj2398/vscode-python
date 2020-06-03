@@ -280,6 +280,10 @@ export class NativeEditor extends InteractiveBase implements INotebookEditor {
                 this.handleMessage(message, payload, this.export);
                 break;
 
+            case InteractiveWindowMessages.ExportAs:
+                this.handleMessage(message, payload, this.exportAs);
+                break;
+
             case InteractiveWindowMessages.UpdateModel:
                 this.handleMessage(message, payload, this.updateModel);
                 break;
@@ -703,6 +707,10 @@ export class NativeEditor extends InteractiveBase implements INotebookEditor {
             }
             status.dispose();
         }
+    }
+
+    private async exportAs(): Promise<void> {
+        console.log('worked!');
     }
 
     private async viewDocument(contents: string): Promise<void> {
